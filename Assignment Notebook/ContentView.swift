@@ -19,15 +19,21 @@ struct ContentView: View {
         [AssignmentItem(course: "Math", description: "workbook pages", dueDate: Date()),
          AssignmentItem(course: "English", description: "poem analysis", dueDate: Date()),
          AssignmentItem(course: "Biology", description: "read chapter 14", dueDate: Date())]
-
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        NavigationView {
+            List {
+                ForEach(AssignmentItems) { AssignmentItem in
+                    Text(AssignmentItem.description)
+                }
+            }
+            .navigationBarTitle("Assignment List")
+        }
     }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
+    
+    struct ContentView_Previews: PreviewProvider {
+        static var previews: some View {
+            ContentView()
+        }
     }
 }
