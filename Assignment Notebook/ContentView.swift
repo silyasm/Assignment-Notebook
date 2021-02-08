@@ -15,7 +15,7 @@ struct ContentView: View {
         var dueDate = Date()
     }
     
-    var AssignmentItems =
+    @State var assignmentItems =
         [AssignmentItem(course: "Math", description: "workbook pages", dueDate: Date()),
          AssignmentItem(course: "English", description: "poem analysis", dueDate: Date()),
          AssignmentItem(course: "Biology", description: "read chapter 14", dueDate: Date())]
@@ -23,11 +23,19 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             List {
-                ForEach(AssignmentItems) { AssignmentItem in
-                    Text(AssignmentItem.description)
+                ForEach(assignmentItems) { item in
+                    Text(item.description)
                 }
+                    .onMove(perform: { indices, newOffset in
+                        assignmentItems.move(fromOffsets: indices, toOffset: newOffset)
+                    })
+                    .onDelete(perform: { indexSet in
+                        assignmentItems.remove(atOffsets: indexSet)
+                    })
             }
             .navigationBarTitle("Assignment List")
+            .navigationBarItems(leading: EditButton())
+            }
         }
     }
     
@@ -36,4 +44,4 @@ struct ContentView: View {
             ContentView()
         }
     }
-}
+
