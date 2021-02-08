@@ -14,6 +14,11 @@ struct ContentView: View {
         var description = String()
         var dueDate = Date()
     }
+    
+    var AssignmentItems =
+        [AssignmentItem(course: "Math", description: "workbook pages", dueDate: Date()),
+         AssignmentItem(course: "English", description: "poem analysis", dueDate: Date()),
+         AssignmentItem(course: "Biology", description: "read chapter 14", dueDate: Date())]
 
     var body: some View {
         Text("Hello, world!")
