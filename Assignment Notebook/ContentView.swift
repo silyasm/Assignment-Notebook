@@ -18,11 +18,12 @@ struct ContentView: View {
                     HStack {
                         VStack(alignment: .leading) {
                             Text(item.course)
-                                .font(.headline)
+                                .font(.system(size: 20, weight: .bold, design: .serif))
+                                .foregroundColor(.red)
                             Text(item.description)
+                            Text("Due: \(item.dueDate, style: .date)")
                         }
                         Spacer()
-                        Text(item.dueDate, style: .date)
                     }
                 }
                     .onMove(perform: { indices, newOffset in
