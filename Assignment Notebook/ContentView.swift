@@ -18,8 +18,8 @@ struct ContentView: View {
                     HStack {
                         VStack(alignment: .leading) {
                             Text(item.course)
-                                .font(.system(size: 20, weight: .bold, design: .serif))
-                                .foregroundColor(.red)
+                                .font(.system(size: 20, weight: .bold))
+                                .foregroundColor(.blue)
                             Text(item.description)
                             Text("Due: \(item.dueDate, style: .date)")
                         }
@@ -37,7 +37,7 @@ struct ContentView: View {
                 AddAssignmentView(assignmentList: assignmentList)
             })
             .navigationBarTitle("Assignment List")
-            .navigationBarItems(leading: EditButton(),
+            .navigationBarItems(leading: EditButton().font(.system(size: 20, weight: .bold)),
                                 trailing: Button(action: {
                                                     showingAddAssignmentView = true}) {
                                                     Image(systemName: "plus")

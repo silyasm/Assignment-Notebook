@@ -21,12 +21,15 @@ static let courses = ["Math", "English", "History", "Science", "World Language"]
                 Picker("Course", selection: $course) {
                     ForEach(Self.courses, id: \.self) { course in
                         Text(course)
+                            .font(.system(size: 20, weight: .bold))
+                            .foregroundColor(.blue)
                     }
                 }
-                TextField("Description", text: $description)
+                TextField("Description", text: $description).font(.system(size: 20, weight: .medium))
                 DatePicker("Due Date", selection: $dueDate, displayedComponents: .date)
             }
-            .navigationBarTitle("Add New Assignment")
+            .font(.system(size: 20, weight: .bold))
+            .navigationBarTitle("Add Assignment")
             .navigationBarItems(trailing: Button("Save") {
                 if course.count > 0 && description.count > 0 {
                     let item = AssignmentItem(id: UUID(), course: course,
